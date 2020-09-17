@@ -3,8 +3,10 @@
 namespace AddressBook
 {
     class Program
-    {     
-         static void Main(string[] args)
+    {
+        private static string fname;
+
+        static void Main(string[] args)
           {
             Console.WriteLine("Hello Welcome To AddressBook Management");
             int choice;
@@ -17,8 +19,9 @@ namespace AddressBook
                 Console.WriteLine("\t--MENU--");
                 Console.WriteLine("1: Add New Person      ");
                 Console.WriteLine("2: Display Records     ");
-                Console.WriteLine("3: Exit		       \n");
-                Console.WriteLine("--- Enter Your Choice ---");
+                Console.WriteLine("3: Edit Records        ");
+                Console.WriteLine("4: Exit		        \n");
+                Console.WriteLine("--- Enter Your Choice---");
 
                 choice = Console.Read();
 
@@ -31,6 +34,9 @@ namespace AddressBook
                         help.displayRecord();
                         break;
                     case 3:
+                        help.editRecord(fname);
+                        break;
+                    case 4:
                         i = 1;
                         break;
                     default:
