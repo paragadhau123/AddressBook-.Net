@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
 
@@ -7,10 +6,11 @@ namespace AddressBook
 {
     class Helper
     {
-
+        List<Person> p = new ArrayList<Person>();
 
         public void addRecord()
         {
+
             String fname, lname, address, city, state, phone, zip;
             Console.WriteLine("Enter First Name");
             fname = Console.ReadLine();
@@ -26,10 +26,19 @@ namespace AddressBook
             zip = Console.ReadLine();
             Console.WriteLine("Enter phone number");
             phone = Console.ReadLine();
-            List<Person> person = new ArrayList<Person>();
-            person.Add(new Person(fname, lname, address, city, state, phone, zip));
-        }  
-           
+            p.Add(new Person(fname, lname, address, city, state, phone, zip));
         }
+        public void displayRecord()
+        {
+            for (int i=0;i<=p.Count;i++)
+            {
+                Console.WriteLine(p);
+            }
+
+        } 
+
     }
+
+   
+}
 
