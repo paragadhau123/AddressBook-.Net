@@ -8,7 +8,7 @@ namespace AddressBook
     {
         List<Person> PERSON = new ArrayList<Person>();
 
-        // public int id { get; set; }
+       
         static String fname, lname, address, city, state, phone, zip;
 
         public void addRecord()
@@ -32,9 +32,9 @@ namespace AddressBook
         }
         public void displayRecord()
         {
-            for (int i = 0; i <= PERSON.Count; i++)
+            foreach (Person person in PERSON)
             {
-                Console.WriteLine(PERSON);
+                Console.WriteLine(person);
             }
 
         }
@@ -56,7 +56,8 @@ namespace AddressBook
                                 + "\t4: Phone\n"
                                 + "\t5: Zip Code\n"
                                 + "\t6. Save And Exit\n");
-                        int choice = Console.Read();
+                        String option = Console.ReadLine();
+                        int choice = Convert.ToInt32(option);
                         switch (choice)
                         {
                             case 1:
@@ -91,16 +92,11 @@ namespace AddressBook
                                 Console.WriteLine("Please Enter Valid Option");
                                 break;
                         }
-                        //Console.WriteLine(PERSON.Find(id));
+                        Console.WriteLine(PERSON);
                     }
                 } //end of edit() method
             }
         }
-
-
-
-
-
                 public void deleteRecord()
                 {
                     int id;
