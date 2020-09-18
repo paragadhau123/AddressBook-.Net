@@ -7,8 +7,9 @@ namespace AddressBook
     class Helper
     {
         List<Person> PERSON = new ArrayList<Person>();
-        public static int id { get; set; }
-      static   String fname, lname, address, city, state, phone, zip;
+
+        // public int id { get; set; }
+        static String fname, lname, address, city, state, phone, zip;
 
         public void addRecord()
         {
@@ -93,10 +94,27 @@ namespace AddressBook
                         //Console.WriteLine(PERSON.Find(id));
                     }
                 } //end of edit() method
-
             }
-
         }
-    }
-}
 
+
+
+
+
+                public void deleteRecord()
+                {
+                    int id;
+                    foreach (Person p in PERSON)
+                    {
+                        Console.WriteLine("ID: #" + PERSON.IndexOf(p) + " : " + p);
+
+                    }
+                    id = Console.Read();
+                    Console.WriteLine("\nEnter #ID to delete Contact : ");
+                    PERSON.RemoveAt(id);
+                }
+            }
+        }
+    
+
+     

@@ -4,7 +4,6 @@ namespace AddressBook
 {
     class Program
     {
-        private static string fname;
 
         static void Main(string[] args)
           {
@@ -20,7 +19,8 @@ namespace AddressBook
                 Console.WriteLine("1: Add New Person      ");
                 Console.WriteLine("2: Display Records     ");
                 Console.WriteLine("3: Edit Records        ");
-                Console.WriteLine("4: Exit		        \n");
+                Console.WriteLine("4; Delete Records      ");
+                Console.WriteLine("5: Exit		        \n");
                 Console.WriteLine("--- Enter Your Choice---");
 
                 choice = Console.Read();
@@ -34,9 +34,14 @@ namespace AddressBook
                         help.displayRecord();
                         break;
                     case 3:
-                        help.editRecord(fname);
+                        Console.WriteLine("Enter First Name To Edit Records :");
+                        String firstName=Console.ReadLine();
+                        help.editRecord(firstName);
                         break;
                     case 4:
+                        help.deleteRecord();
+                        break;
+                    case 5:
                         i = 1;
                         break;
                     default:
