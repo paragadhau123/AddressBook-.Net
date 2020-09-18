@@ -8,30 +8,39 @@ namespace AddressBook
     {
         List<Person> PERSON = new ArrayList<Person>();
 
-       
-        static String fname, lname, address, city, state, phone, zip;
+        String fname = null;
+        static String lname, address, city, state, phone, zip;
 
         public void addRecord()
         {
-
-            Console.WriteLine("Enter First Name");
-            fname = Console.ReadLine();
-            Console.WriteLine("Enter Last Name");
-            lname = Console.ReadLine();
-            Console.WriteLine("Enter Address");
-            address = Console.ReadLine();
-            Console.WriteLine("Enter City");
-            city = Console.ReadLine();
-            Console.WriteLine("Enter State");
-            state = Console.ReadLine();
-            Console.WriteLine("Enter Zip");
-            zip = Console.ReadLine();
-            Console.WriteLine("Enter phone number");
-            phone = Console.ReadLine();
-            PERSON.Add(new Person(fname, lname, address, city, state, phone, zip));
+            int i = 0;
+            while (i == 0)
+            {
+                Console.WriteLine("Enter First Name");
+                fname = Console.ReadLine();
+                if (CheckExist(fname))
+                {
+                    Console.WriteLine("Record with name " + fname + " already exist!!\nPlease enter another name");
+                    i = 1;
+                }
+                Console.WriteLine("Enter Last Name");
+                lname = Console.ReadLine();
+                Console.WriteLine("Enter Address");
+                address = Console.ReadLine();
+                Console.WriteLine("Enter City");
+                city = Console.ReadLine();
+                Console.WriteLine("Enter State");
+                state = Console.ReadLine();
+                Console.WriteLine("Enter Zip");
+                zip = Console.ReadLine();
+                Console.WriteLine("Enter phone number");
+                phone = Console.ReadLine();
+                PERSON.Add(new Person(fname, lname, address, city, state, phone, zip));
+            }
         }
         public void displayRecord()
         {
+
             foreach (Person person in PERSON)
             {
                 Console.WriteLine(person);
@@ -97,20 +106,40 @@ namespace AddressBook
                 } //end of edit() method
             }
         }
-                public void deleteRecord()
-                {
-                    int id;
-                    foreach (Person p in PERSON)
-                    {
-                        Console.WriteLine("ID: #" + PERSON.IndexOf(p) + " : " + p);
+        public void deleteRecord()
+        {
+            int id;
+            foreach (Person p in PERSON)
+            {
+                Console.WriteLine("ID: #" + PERSON.IndexOf(p) + " : " + p);
 
-                    }
-                    id = Console.Read();
-                    Console.WriteLine("\nEnter #ID to delete Contact : ");
-                    PERSON.RemoveAt(id);
+            }
+            id = Console.Read();
+            Console.WriteLine("\nEnter #ID to delete Contact : ");
+            PERSON.RemoveAt(id);
+        }
+
+
+        public bool CheckExist(string fname)
+        {
+            int flag = 0;
+            foreach (Person person in PERSON)
+            {
+                if (person.getFname().Equals(fname))
+                {
+                    flag = 1;
+                    break;
                 }
             }
+            if (flag == 1)
+            {
+                return true;
+            }
+            return false;
         }
+    }
+
+}
     
 
      
