@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace AddressBook
 {
-    class Helper
+    class Helper : IComparer<Person>
     {
         List<Person> PERSON = new ArrayList<Person>();
 
@@ -131,8 +131,16 @@ namespace AddressBook
             PERSON.RemoveAt(id);
         }
 
-        public void sortRecord()
+        public void sortByName()
         {
+
+            PERSON.Sort(this.Compare);
+            this.displayRecord();
+        }
+
+        public int Compare(Person x, Person y)
+        {
+            return x.getFname().CompareTo(y.getFname());
 
         }
         public bool CheckExist(string fname)
