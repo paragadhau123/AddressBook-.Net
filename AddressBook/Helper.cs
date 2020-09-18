@@ -4,12 +4,14 @@ using System.Collections.Generic;
 
 namespace AddressBook
 {
-    class Helper : IComparer<Person>
+    public class Helper
     {
-        List<Person> PERSON = new ArrayList<Person>();
+        Person p = null;
+        Sort sort = new Sort();
+        List<Person> list = new List<Person>();
 
         String fname = null;
-        static String lname, address, city, state, phone, zip;
+        String lname, address, city, state, phone, zip;
 
         public void addRecord()
         {
@@ -28,45 +30,50 @@ namespace AddressBook
                     i = 1;
                 }
             }
-                Console.WriteLine("Enter Last Name");
-                lname = Console.ReadLine();
-                Console.WriteLine("Enter Address");
-                address = Console.ReadLine();
-                Console.WriteLine("Enter City");
-                city = Console.ReadLine();
-                Console.WriteLine("Enter State");
-                state = Console.ReadLine();
-                Console.WriteLine("Enter Zip");
-                zip = Console.ReadLine();
-                Console.WriteLine("Enter phone number");
-                phone = Console.ReadLine();
-                PERSON.Add(new Person(fname, lname, address, city, state, phone, zip));
+            Console.WriteLine("Enter Last Name");
+            lname = Console.ReadLine();
+            Console.WriteLine("Enter Address");
+            address = Console.ReadLine();
+            Console.WriteLine("Enter City");
+            city = Console.ReadLine();
+            Console.WriteLine("Enter State");
+            state = Console.ReadLine();
+            Console.WriteLine("Enter Zip");
+            zip = Console.ReadLine();
+            Console.WriteLine("Enter phone number");
+            phone = Console.ReadLine();
+            p = new Person(fname, lname, address, city, state, phone, zip);
+            list.Add(p);
+            foreach (Person p in list)
+            {
+                Console.WriteLine(p);
             }
-        
+        }
+
         public void displayRecord()
         {
             //printing message 
-            if (PERSON == null)
+            if (list.Count == 0)
             {
                 Console.WriteLine("!!No Records!!");
 
             }
             else
             {
-                foreach (Person person in PERSON)
+                for (int i = 0; i < list.Count; i++)
                 {
-                    Console.WriteLine(person);
+                    Console.WriteLine(list[i]);
                 }
             }
         }
         public void editRecord(String fname)
         {
-            for (int k = 0; k < PERSON.Count; k++)
+            for (int k = 0; k < list.Count; k++)
             {
-                Console.WriteLine(PERSON);
-                if (PERSON[k].getFname().Equals(fname))
+                Console.WriteLine(list);
+                if (list[k].getFname().Equals(fname))
                 {
-                    Person person = PERSON[k];
+                    Person person = list[k];
                     Console.WriteLine(person);
                     while (k == 0)
                     {
@@ -113,7 +120,7 @@ namespace AddressBook
                                 Console.WriteLine("Please Enter Valid Option");
                                 break;
                         }
-                        Console.WriteLine(PERSON);
+                        Console.WriteLine(list);
                     }
                 } //end of edit() method
             }
@@ -121,32 +128,51 @@ namespace AddressBook
         public void deleteRecord()
         {
             int id;
-            foreach (Person p in PERSON)
+            foreach (Person p in list)
             {
-                Console.WriteLine("ID: #" + PERSON.IndexOf(p) + " : " + p);
+                Console.WriteLine("ID: #" + list.IndexOf(p) + " : " + p);
 
             }
             id = Console.Read();
             Console.WriteLine("\nEnter #ID to delete Contact : ");
-            PERSON.RemoveAt(id);
+            list.RemoveAt(id);
         }
-
-        public void sortByName()
+        public void sortRecord()
         {
-
-            PERSON.Sort(this.Compare);
-            this.displayRecord();
-        }
-
-        public int Compare(Person x, Person y)
-        {
-            return x.getFname().CompareTo(y.getFname());
-
+            Console.WriteLine("Sort By...\n"
+                + "1: First Name\n"
+                + "2: City\n"
+                + "3: State\n"
+                + "4: Zip Code\n"
+                + "5: Back");
+            String option = Console.ReadLine();
+            int choice = Convert.ToInt32(option);
+            switch (choice)
+            {
+                case 1:
+                    sort.sortByName(list);
+                    break;
+                case 2:
+                    sort.sortByCity(list);
+                    break;
+                case 3:
+                    sort.sortByState(list);
+                    break;
+                case 4:
+                    sort.sortByZip(list);
+                    break;
+                case 5:
+                    return;
+                    break;
+                default:
+                    Console.WriteLine("Please Enter Valid Option...");
+                    break;
+            }
         }
         public bool CheckExist(string fname)
         {
             int flag = 0;
-            foreach (Person person in PERSON)
+            foreach (Person person in list)
             {
                 if (person.getFname().Equals(fname))
                 {
@@ -161,8 +187,8 @@ namespace AddressBook
             return false;
         }
     }
-
 }
+
     
 
      

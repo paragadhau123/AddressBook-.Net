@@ -3,98 +3,108 @@
 
 namespace AddressBook
 {
-    class Person
+    class Person 
     {
         private String fname, lname, address, city, state, phone, zip;
         public Person(String fname, String lname, String address, String city, String state, String phone, String zip)
         {
-            this.fname = fname;
-            this.lname = lname;
-            this.address = address;
-            this.city = city;
-            this.state = state;
-            this.phone = phone;
-            this.zip = zip;
-        }
-        public String getFname()
-        {
-            return fname;
+            this.Fname = fname;
+            this.Lname = lname;
+            this.Address = address;
+            this.City = city;
+            this.State = state;
+            this.Phone = phone;
+            this.Zip = zip;
         }
 
-        public void setFname(String fname)
-        {
-            this.fname = fname;
-        }
+        public string Fname { get => fname; set => fname = value; }
+        public string Lname { get => lname; set => lname = value; }
+        public string Address { get => address; set => address = value; }
+        public string City { get => city; set => city = value; }
+        public string State { get => state; set => state = value; }
+        public string Phone { get => phone; set => phone = value; }
+        public string Zip { get => zip; set => zip = value; }
 
-        public String getLname()
-        {
-            return lname;
-        }
+          public String getFname()
+         {
+return fname;
+}
 
-        public void setLname(String lname)
-        {
-            this.lname = lname;
-        }
+public void setFname(String fname)
+{
+this.fname = fname;
+}
 
-        public String getAddress()
-        {
-            return address;
-        }
+public String getLname()
+{
+return lname;
+}
 
-        public void setAddress(String address)
-        {
-            this.address = address;
-        }
+public void setLname(String lname)
+{
+this.lname = lname;
+}
 
-        public String getCity()
-        {
-            return city;
-        }
+public String getAddress()
+{
+return address;
+}
 
-        public void setCity(String city)
-        {
-            this.city = city;
-        }
+public void setAddress(String address)
+{
+this.address = address;
+}
 
-        public String getState()
-        {
-            return state;
-        }
+public String getCity()
+{
+return city;
+}
 
-        public void setState(String state)
-        {
-            this.state = state;
-        }
+public void setCity(String city)
+{
+this.city = city;
+}
 
-        public String getPhone()
-        {
-            return phone;
-        }
+public String getState()
+{
+return state;
+}
 
-        public void setPhone(String phone)
-        {
-            this.phone = phone;
-        }
+public void setState(String state)
+{
+this.state = state;
+}
 
-        public String getZip()
-        {
-            return zip;
-        }
+public String getPhone()
+{
+return phone;
+}
 
-        public void setZip(String zip)
-        {
-            this.zip = zip;
-        }
+public void setPhone(String phone)
+{
+this.phone = phone;
+}
+
+public String getZip()
+{
+return zip;
+}
+
+public void setZip(String zip)
+{
+this.zip = zip;
+}
+
         public String toString()
         {
             return "Person{" +
-                    "First Name='" + fname + '\'' +
-                    ", Last Name='" + lname + '\'' +
-                    ", Address='" + address + '\'' +
-                    ", City='" + city + '\'' +
-                    ", State='" + state + '\'' +
-                    ", Phone Number='" + phone + '\'' +
-                    ", Zip Code='" + zip + '\'' +
+                    "First Name='" + Fname + '\'' +
+                    ", Last Name='" + Lname + '\'' +
+                    ", Address='" + Address + '\'' +
+                    ", City='" + City + '\'' +
+                    ", State='" + State + '\'' +
+                    ", Phone Number='" + Phone + '\'' +
+                    ", Zip Code='" + Zip + '\'' +
                     '}';
         }
     }
