@@ -18,11 +18,16 @@ namespace AddressBook
             {
                 Console.WriteLine("Enter First Name");
                 fname = Console.ReadLine();
+                //Checking for duplicates
                 if (CheckExist(fname))
                 {
                     Console.WriteLine("Record with name " + fname + " already exist!!\nPlease enter another name");
+                }
+                else
+                {
                     i = 1;
                 }
+            }
                 Console.WriteLine("Enter Last Name");
                 lname = Console.ReadLine();
                 Console.WriteLine("Enter Address");
@@ -37,9 +42,10 @@ namespace AddressBook
                 phone = Console.ReadLine();
                 PERSON.Add(new Person(fname, lname, address, city, state, phone, zip));
             }
-        }
+        
         public void displayRecord()
         {
+            //printing message 
             if (PERSON == null)
             {
                 Console.WriteLine("!!No Records!!");
@@ -125,7 +131,10 @@ namespace AddressBook
             PERSON.RemoveAt(id);
         }
 
+        public void sortRecord()
+        {
 
+        }
         public bool CheckExist(string fname)
         {
             int flag = 0;

@@ -85,7 +85,19 @@ namespace AddressBook
         {
             this.zip = zip;
         }
-
+        public String toString()
+        {
+            return "Person{" +
+                    "First Name='" + fname + '\'' +
+                    ", Last Name='" + lname + '\'' +
+                    ", Address='" + address + '\'' +
+                    ", City='" + city + '\'' +
+                    ", State='" + state + '\'' +
+                    ", Phone Number='" + phone + '\'' +
+                    ", Zip Code='" + zip + '\'' +
+                    '}';
+        }
     }
+  
 }
 
