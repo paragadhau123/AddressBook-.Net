@@ -5,12 +5,12 @@ namespace AddressBook
 {
     public class Helper
     {
-         Person person = null;
-         Sort sort = new Sort();
-         List<Person> list = new List<Person>();
+        Person person = null;
+        Sort sort = new Sort();
+        List<Person> list = new List<Person>();
 
-         String fname = null;
-         String lname, address, city, state, phone, zip;
+        String fname = null;
+        String lname, address, city, state, phone, zip;
 
         public void AddRecord()
         {
@@ -18,7 +18,7 @@ namespace AddressBook
             while (i == 0)
             {
                 Console.WriteLine("Enter First Name");
-                fname = Console.ReadLine();
+               this.fname = Console.ReadLine();
                 //Checking for duplicates
                 if (CheckExist(fname))
                 {
@@ -43,12 +43,12 @@ namespace AddressBook
             phone = Console.ReadLine();
             person = new Person(fname, lname, address, city, state, phone, zip);
             list.Add(person);
-           
+
         }
 
         public void DisplayRecord()
         {
-           
+
             if (list.Count == 0)
             {
                 Console.WriteLine("!!No Records!!");
@@ -86,27 +86,27 @@ namespace AddressBook
                             case 1:
                                 Console.WriteLine("Enter new Street : ");
                                 String address = Console.ReadLine();
-                                person.Address=address;
+                                person.Address = address;
                                 break;
                             case 2:
                                 Console.WriteLine("Enter new City : ");
                                 String city = Console.ReadLine();
-                                person.City=city;
+                                person.City = city;
                                 break;
                             case 3:
                                 Console.WriteLine("Enter new State : ");
                                 String state = Console.ReadLine();
-                                person.State=state;
+                                person.State = state;
                                 break;
                             case 4:
                                 Console.WriteLine("Enter new Phone : ");
                                 String phone = Console.ReadLine();
-                                person.PhoneNo=phone;
+                                person.PhoneNo = phone;
                                 break;
                             case 5:
                                 Console.WriteLine("Enter new Zip Code : ");
                                 String zip = Console.ReadLine();
-                                person.ZipCode=zip;
+                                person.ZipCode = zip;
                                 break;
                             case 6:
                                 k = 1;
@@ -129,7 +129,7 @@ namespace AddressBook
             {
                 if (list[i].FirstName.Equals(firstName))
                 {
-                    list.Remove(person);
+                    list.Remove(this.person);
                 }
             }
         }
@@ -146,16 +146,16 @@ namespace AddressBook
             switch (choice)
             {
                 case 1:
-                    sort.sortByName(list);
+                    sort.SortByName(list);
                     break;
                 case 2:
-                    sort.sortByCity(list);
+                    sort.SortByCity(list);
                     break;
                 case 3:
-                    sort.sortByState(list);
+                    sort.SortByState(list);
                     break;
                 case 4:
-                    sort.sortByZip(list);
+                    sort.SortByZip(list);
                     break;
                 case 5:
                     return;
@@ -165,25 +165,51 @@ namespace AddressBook
                     break;
             }
         }
-        public bool CheckExist(string fname)
+        public void searchInRecords()
         {
-            int flag = 0;
-            foreach (Person person in list)
+            int i = 0;
+            while (i == 0)
             {
-                if (person.FirstName.Equals(fname))
+                Console.WriteLine("1. Search By City\n" +
+                        "2. Search By State\n" +
+                        "3. Back\n" +
+                        "Choose Your Option");
+                String option = Console.ReadLine();
+                int choice = Convert.ToInt32(option);
+                switch (choice)
                 {
-                    flag = 1;
-                    break;
+                    case 1:
+                        sort.searchByCity(list);
+                        break;
+                    case 2:
+                        sort.searchByState(list);
+                        break;
+                    default:
+                        Console.WriteLine("Please Enter Valid Option...");
+                        i = 1;
+                        break;
                 }
             }
-            if (flag == 1)
+        }
+            public bool CheckExist(string fname)
             {
-                return true;
+                int flag = 0;
+                foreach (Person person in list)
+                {
+                    if (person.FirstName.Equals(fname))
+                    {
+                        flag = 1;
+                        break;
+                    }
+                }
+                if (flag == 1)
+                {
+                    return true;
+                }
+                return false;
             }
-            return false;
         }
     }
-}
 
 
 

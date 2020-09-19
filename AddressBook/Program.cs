@@ -21,7 +21,8 @@ namespace AddressBook
                 Console.WriteLine("3: Edit Records        ");
                 Console.WriteLine("4; Delete Records      ");
                 Console.WriteLine("5: Sort Records		  ");
-                Console.WriteLine("6: Exit		        \n");
+                Console.WriteLine("6: Search Records	  ");
+                Console.WriteLine("7: Exit		        \n");
                 Console.WriteLine("--- Enter Your Choice---");
 
               String  opt = Console.ReadLine();
@@ -49,6 +50,9 @@ namespace AddressBook
                         help.SortRecord();
                         break;
                     case 6:
+                        help.searchInRecords();
+                        break;
+                    case 7:
                         i = 1;
                         break;
                     default:
