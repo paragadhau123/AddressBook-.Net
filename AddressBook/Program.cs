@@ -30,21 +30,23 @@ namespace AddressBook
                 switch (choice)
                 {
                     case 1:
-                        help.addRecord();
+                        help.AddRecord();
                         break;
                     case 2:
-                        help.displayRecord();
+                        help.DisplayRecord();
                         break;
                     case 3:
                         Console.WriteLine("Enter First Name To Edit Records :");
                         String firstName=Console.ReadLine();
-                        help.editRecord(firstName);
+                        help.EditRecord(firstName);
                         break;
                     case 4:
-                        help.deleteRecord();
+                        Console.WriteLine("Enter First Name To Delete Records :");
+                        String Name = Console.ReadLine();
+                        help.DeleteRecord(Name);
                         break;
                     case 5:
-                        help.sortRecord();
+                        help.SortRecord();
                         break;
                     case 6:
                         i = 1;

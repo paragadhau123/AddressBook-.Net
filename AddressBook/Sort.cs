@@ -7,22 +7,22 @@ namespace AddressBook
     {
         public int CompareByName(Person x, Person y)
         {
-            return x.getFname().CompareTo(y.getFname());
+            return x.FirstName.CompareTo(y.FirstName);
 
         }
         public int CompareByCity(Person x, Person y)
         {
-            return x.getCity().CompareTo(y.getCity());
+            return x.City.CompareTo(y.City);
 
         }
         public int CompareByState(Person x, Person y)
         {
-            return x.getState().CompareTo(y.getState());
+            return x.State.CompareTo(y.State);
 
         }
         public int CompareByZip(Person x, Person y)
         {
-            return x.getZip().CompareTo(y.getZip());
+            return x.ZipCode.CompareTo(y.ZipCode);
 
         }
         public void sortByName(List <Person> p)

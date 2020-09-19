@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
 namespace AddressBook
 {
     public class Helper
     {
-        Person p = null;
-        Sort sort = new Sort();
-        List<Person> list = new List<Person>();
+         Person person = null;
+         Sort sort = new Sort();
+         List<Person> list = new List<Person>();
 
-        String fname = null;
-        String lname, address, city, state, phone, zip;
+         String fname = null;
+         String lname, address, city, state, phone, zip;
 
-        public void addRecord()
+        public void AddRecord()
         {
             int i = 0;
             while (i == 0)
@@ -42,17 +41,14 @@ namespace AddressBook
             zip = Console.ReadLine();
             Console.WriteLine("Enter phone number");
             phone = Console.ReadLine();
-            p = new Person(fname, lname, address, city, state, phone, zip);
-            list.Add(p);
-            foreach (Person p in list)
-            {
-                Console.WriteLine(p);
-            }
+            person = new Person(fname, lname, address, city, state, phone, zip);
+            list.Add(person);
+           
         }
 
-        public void displayRecord()
+        public void DisplayRecord()
         {
-            //printing message 
+           
             if (list.Count == 0)
             {
                 Console.WriteLine("!!No Records!!");
@@ -60,18 +56,17 @@ namespace AddressBook
             }
             else
             {
-                for (int i = 0; i < list.Count; i++)
+                foreach (Person k in list)
                 {
-                    Console.WriteLine(list[i]);
+                    Console.WriteLine(k);
                 }
             }
         }
-        public void editRecord(String fname)
+        public void EditRecord(String fname)
         {
             for (int k = 0; k < list.Count; k++)
             {
-                Console.WriteLine(list);
-                if (list[k].getFname().Equals(fname))
+                if (list[k].FirstName.Equals(fname))
                 {
                     Person person = list[k];
                     Console.WriteLine(person);
@@ -91,27 +86,27 @@ namespace AddressBook
                             case 1:
                                 Console.WriteLine("Enter new Street : ");
                                 String address = Console.ReadLine();
-                                person.setAddress(address);
+                                person.Address=address;
                                 break;
                             case 2:
                                 Console.WriteLine("Enter new City : ");
                                 String city = Console.ReadLine();
-                                person.setCity(city);
+                                person.City=city;
                                 break;
                             case 3:
                                 Console.WriteLine("Enter new State : ");
                                 String state = Console.ReadLine();
-                                person.setState(state);
+                                person.State=state;
                                 break;
                             case 4:
                                 Console.WriteLine("Enter new Phone : ");
                                 String phone = Console.ReadLine();
-                                person.setPhone(phone);
+                                person.PhoneNo=phone;
                                 break;
                             case 5:
                                 Console.WriteLine("Enter new Zip Code : ");
                                 String zip = Console.ReadLine();
-                                person.setZip(zip);
+                                person.ZipCode=zip;
                                 break;
                             case 6:
                                 k = 1;
@@ -120,24 +115,25 @@ namespace AddressBook
                                 Console.WriteLine("Please Enter Valid Option");
                                 break;
                         }
-                        Console.WriteLine(list);
+                        foreach (Person t in list)
+                        {
+                            Console.WriteLine(t);
+                        }
                     }
                 } //end of edit() method
             }
         }
-        public void deleteRecord()
+        public void DeleteRecord(string firstName)
         {
-            int id;
-            foreach (Person p in list)
+            for (int i = 0; i < list.Count; i++)
             {
-                Console.WriteLine("ID: #" + list.IndexOf(p) + " : " + p);
-
+                if (list[i].FirstName.Equals(firstName))
+                {
+                    list.Remove(person);
+                }
             }
-            id = Console.Read();
-            Console.WriteLine("\nEnter #ID to delete Contact : ");
-            list.RemoveAt(id);
         }
-        public void sortRecord()
+        public void SortRecord()
         {
             Console.WriteLine("Sort By...\n"
                 + "1: First Name\n"
@@ -174,7 +170,7 @@ namespace AddressBook
             int flag = 0;
             foreach (Person person in list)
             {
-                if (person.getFname().Equals(fname))
+                if (person.FirstName.Equals(fname))
                 {
                     flag = 1;
                     break;
@@ -189,6 +185,5 @@ namespace AddressBook
     }
 }
 
-    
 
-     
+
